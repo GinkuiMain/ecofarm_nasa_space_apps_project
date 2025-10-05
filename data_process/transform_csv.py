@@ -1,8 +1,6 @@
 import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
 
-df = pd.read_csv('df/SMAP_L3_SM_P_E_20251003_R19240_001.csv')
+df = pd.read_csv('../df/SMAP_L3_SM_P_E_20251003_R19240_001.csv')
 
 # verifica nulos
 print(df.isnull().sum())
@@ -13,10 +11,11 @@ df = df.dropna()
 # Mantém apenas uma amostra (10% da base original) para facilitar a plotagem
 df = df.sample(frac=0.1, random_state=1)
 
-df.to_csv('df/SMAP_L3_SM_P_E_20251003_R19240_001_cleaned.csv', index=False)
+df.to_csv('../df/SMAP_L3_SM_P_E_20251003_R19240_001_cleaned.csv', index=False)
 
-# Analisa CSV base
-df = pd.read_csv('df/SMAP_L3_SM_P_E_20251003_R19240_001_cleaned.csv')
+# Analisa CSV limpo
+df = pd.read_csv('../df/SMAP_L3_SM_P_E_20251003_R19240_001_cleaned.csv')
+print(df.describe())
 
 # retorna dados de Sergipe
 LAT_MIN = -11.5
@@ -25,9 +24,9 @@ LON_MIN = -38.5
 LON_MAX = -36.0
 
 sergipe_mask = (
-    (df["Latitude"] >= LAT_MIN) & 
-    (df["Latitude"] <= LAT_MAX) & 
-    (df["Longitude"] >= LON_MIN) & 
+    (df["Latitude"] >= LAT_MIN) &
+    (df["Latitude"] <= LAT_MAX) &
+    (df["Longitude"] >= LON_MIN) &
     (df["Longitude"] <= LON_MAX)
 )
 
