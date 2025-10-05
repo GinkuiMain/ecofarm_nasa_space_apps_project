@@ -33,3 +33,4 @@ sergipe_mask = (
 df_sergipe = df[sergipe_mask]
 
 print(df_sergipe.describe())
+print(f"{(df_sergipe['Soil_Moisture'].mean() * 100):.2f}")
